@@ -1,0 +1,10 @@
+{
+    "name": "awards",
+    "fullName": "about:awards",
+    "id": "awards@caraveo.com",
+    "description": "Your Awards program dashboard",
+    "author": "Shane Caraveo",
+    "version": "0.1.0",
+    "dependencies": ["api-utils", "addon-kit"],
+    "main": "./main.js"
+}
