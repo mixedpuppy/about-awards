@@ -2,12 +2,44 @@
 
 <html>
 <head>
-    <title>about:awards</title>
+
+<head>
+  <!--<link rel="stylesheet" type="text/css" href="styles.css" />-->
+  <script src="jquery-1.4.4.min.js" charset="utf-8" type="text/javascript"></script>
+  <script src="jquery.tmpl.min.js" charset="utf-8" type="text/javascript"></script>
+  <script src="awards.js" charset="utf-8" type="text/javascript"></script>
+
+  <title>about:awards</title>
 </head>
 
 <body>
 
-<div>about Awards</div>
+<div>about Awards</div> 
+
+<div id="programs-list"></div>
+
+<script id="programs-tmpl" type="text/x-jquery-tmpl">
+  <div id="programs">
+    <ul class="program">
+      {{each( i, prg ) programs}}
+      <li class="program">${prg.program.name}
+        <div>
+          <div class="programName">${prg.account.username}</div>
+          <div class="programInfo">${prg.data.name}</div>
+          <div class="programInfo">${prg.data.account}</div>
+          <div class="programInfo">${prg.data.balance}</div>
+          <div class="programInfo">${prg.data.status}</div>
+          <div class="programInfo">${prg.data.statusMiles}</div>
+          <div class="programInfo">${prg.data.expiration}</div>
+        </div>
+        <div class="links">
+          <button class="refresh" data-for="${i}">refresh</button>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</script>
 
 </body>
 </html>
