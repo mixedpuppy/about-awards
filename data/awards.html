@@ -4,7 +4,8 @@
 <head>
 
 <head>
-  <!--<link rel="stylesheet" type="text/css" href="styles.css" />-->
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <link rel="stylesheet" type="text/css" href="boxes.css" />
   <script src="jquery-1.4.4.min.js" charset="utf-8" type="text/javascript"></script>
   <script src="jquery.tmpl.min.js" charset="utf-8" type="text/javascript"></script>
   <script src="awards.js" charset="utf-8" type="text/javascript"></script>
@@ -14,31 +15,41 @@
 
 <body>
 
-<div>about Awards</div> 
+<div class="title">about:<span class="blue">awards</span></div> 
 
 <div id="programs-list"></div>
 
+
 <script id="programs-tmpl" type="text/x-jquery-tmpl">
-  <div id="programs">
-    <ul class="program">
-      {{each( i, prg ) programs}}
-      <li class="program">${prg.program.name}
-        <div>
-          <div class="programName">${prg.account.username}</div>
-          <div class="programInfo">${prg.data.name}</div>
-          <div class="programInfo">${prg.data.account}</div>
-          <div class="programInfo">${prg.data.balance}</div>
-          <div class="programInfo">${prg.data.status}</div>
-          <div class="programInfo">${prg.data.statusMiles}</div>
-          <div class="programInfo">${prg.data.expiration}</div>
-        </div>
-        <div class="links">
-          <button class="refresh" data-for="${i}">refresh</button>
-        </div>
-      </li>
-      {{/each}}
-    </ul>
-  </div>
+  <table class="headers"><tbody><tr>
+    <td>Account</td>
+    <td>Balance</td>
+    <td>Status</td>
+    <td>Status Miles</td>
+    <td>Expiry</td>
+  </tr></tbody></table>
+
+    {{each( i, prg ) programs}}
+    <div class="program">
+      <div class="programAccount">
+<table><tbody><tr><td class="programName">${prg.program.name}</td><td class="userName">${prg.data.name}</td></tr></tbody></table>
+      </div>
+      <div class="programInfo">
+<table><tbody><tr>
+  <td>${prg.data.account}&nbsp;</td>
+  <td>${prg.data.balance}&nbsp;</td>
+  <td>${prg.data.status}&nbsp;</td>
+  <td>${prg.data.statusMiles}&nbsp;</td>
+  <td>${prg.data.expiration}&nbsp;</td>
+</tr></tbody></table>
+      </div>
+      <div class="links">
+        <button class="refresh" data-for="${i}">refresh</button>
+        <button >login</button>
+        <button >flyertalk</button>
+      </div>
+    </div>
+    {{/each}}
 </script>
 
 </body>

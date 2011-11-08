@@ -1,0 +1,75 @@
+* {
+  margin: 0; padding: 0;
+  font-family: sans-serif
+}
+
+body {
+  background-color: white;
+  padding: 4px;
+}
+
+.blue {
+  color: blue;
+}
+.title {
+  font-size: 1.5em
+}
+#programs-list {
+  display: block;
+  width: 90%;
+  padding: 2px;
+}
+
+.program {
+  border: 1px solid #999;
+  border-radius: 5px;
+  margin: 4px;
+}
+
+.programAccount {
+  border-bottom: 1px solid #999;
+  padding: 4px;
+}
+
+.programAccount table {
+  width: 100%;
+}
+
+.programAccount table td {
+  width: 50%;
+}
+
+.userName {
+  text-align: right;
+}
+
+.programInfo {
+  padding: 4px;
+  background-color: #ddd;
+}
+
+.programInfo table {
+  width: 100%;
+}
+
+.programInfo table td {
+  width: 20%;
+}
+
+
+.programName {
+  color: blue;
+}
+
+.links {
+  background-color: #ddd;
+  padding: 2px;
+}
+
+.headers {
+  width: 100%;
+  padding: 4px;
+}
+.headers td {
+  width: 20%;
+}
