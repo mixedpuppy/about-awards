@@ -33,7 +33,7 @@ function setPrograms(programs, accounts) {
         }
       }
     }
-    awards.console.log("set programs with data "+JSON.stringify(pl));
+    //awards.console.log("set programs with data "+JSON.stringify(pl));
     $("#programs-list").empty();
     $("#programs-tmpl").tmpl({programs: pl}).appendTo("#programs-list");
     $("div.links .refresh").click(function(evt) {
