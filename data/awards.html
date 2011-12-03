@@ -45,8 +45,9 @@
       </div>
       <div class="links">
         <button class="refresh" data-for="${i}">refresh</button>
-        <button >login</button>
-        <button >flyertalk</button>
+    {{each( i, link ) prg.program.links}}
+        <button type="link" data-for="${link.href}">${link.title}</button>
+    {{/each}}
       </div>
     </div>
     {{/each}}

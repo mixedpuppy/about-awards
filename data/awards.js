@@ -40,6 +40,10 @@ function setPrograms(programs, accounts) {
       var i = $(this).attr('data-for');
       awards.refresh(pl[i]);
     });
+    $('button[type="link"]').click(function(evt) {
+      var url = $(this).attr('data-for');
+      window.open(url);
+    });
   } catch(e) {
     awards.console.log("problem: "+e.toString());
   }
