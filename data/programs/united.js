@@ -1,6 +1,4 @@
 
-info_re = /FrequentFlyer/;
-
 self.port.on('program', function(account) {
   console.log('united data '+JSON.stringify(account));
   var username = document.getElementById('UserName');
