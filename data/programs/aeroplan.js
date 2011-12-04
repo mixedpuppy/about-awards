@@ -2,7 +2,7 @@
 info_re = /tierCode:(\w+), currentQualMiles:(\d+)/;
 
 self.port.on('program', function(account) {
-  console.log('aeroplan data '+JSON.stringify(account));
+  //console.log('aeroplan data '+JSON.stringify(account));
   var f1 = document.getElementById('CUST1');
   var f2 = document.getElementById('CUST2');
   var f3 = document.getElementById('CUST3');

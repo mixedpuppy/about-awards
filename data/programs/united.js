@@ -1,6 +1,6 @@
 
 self.port.on('program', function(account) {
-  console.log('united data '+JSON.stringify(account));
+  //console.log('united data '+JSON.stringify(account));
   var username = document.getElementById('UserName');
   if (username) {
     username.value = account.username;
@@ -12,7 +12,7 @@ self.port.on('program', function(account) {
     return;
   }
   if ($('#VUID_Home_Index')[0]) {
-    console.log("try to open account data page");
+    //console.log("try to open account data page");
     unsafeWindow.location = "https://mobile.united.com/FrequentFlyer";
     return;
   }

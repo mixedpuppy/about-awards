@@ -2,7 +2,7 @@
 info_re = /Member Name:.(.*)Mileage Plan Number:.(.*)Available Miles:.(.*)/;
 
 self.port.on('program', function(account) {
-  console.log('alaska data '+JSON.stringify(account));
+  //console.log('alaska data '+JSON.stringify(account));
   var usernameField = document.getElementById(account.usernameField);
   if (!usernameField)
     usernameField = document.getElementById('FormUserControl__signInProfile__userIdControl__userId');
@@ -21,7 +21,7 @@ self.port.on('program', function(account) {
   // gather our data now and send it back
   var info = document.getElementById('FormUserControl__myOverview__mileagePlanInfo');
   var content = info.textContent.replace(/\r|\n/g,'');
-  console.log(content);
+  //console.log(content);
   var info = info_re.exec(content);
 
   // get tier miles
