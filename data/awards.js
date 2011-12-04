@@ -7,7 +7,16 @@ var defaultInfo = {
   expiration: 'unknown'
 }
 
-function setPrograms(programs, accounts) {
+function setPrograms(programs) {
+  //dump("setting programs to "+JSON.stringify(programs)+"\n");
+  $(".new-programs").empty();
+  $("#available-programs-tmpl").tmpl({programs: programs}).appendTo(".new-programs");
+  $('#addProgram').click(function(evt) {
+    awards.addProgram($('#allPrograms :selected').val());
+  });
+}
+
+function setAccounts(programs, accounts) {
   try {
     var pl = []
     for (var p in programs) {
@@ -41,7 +50,7 @@ function setPrograms(programs, accounts) {
     $("#programs-tmpl").tmpl({programs: pl}).appendTo("#programs-list");
     $("div.links .refresh").click(function(evt) {
       var visible = $("#dev_visible").attr('checked')===true;
-      awards.console.log("make this visible? "+visible+" : "+$("#dev_visible").attr('checked'));
+      //awards.console.log("make this visible? "+visible+" : "+$("#dev_visible").attr('checked'));
       var i = $(this).attr('data-for');
       awards.refresh(pl[i], visible);
     });
@@ -60,5 +69,5 @@ function setPrograms(programs, accounts) {
 
 $(document).ready(function() {
   awards.ready();
-  awards.console.log("awards.js is loaded\n");
+  //awards.console.log("awards.js is loaded");
 });

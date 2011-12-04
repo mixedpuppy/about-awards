@@ -26,34 +26,42 @@ self.port.on('data-url', function(baseurl) {
 var programs, accounts;
 
 self.port.on("programs", function(data) {
-  console.log("set programs");
   programs = data;
+  unsafeWindow.setPrograms(programs);
 });
 
 self.port.on("accounts", function(data) {
-  console.log("set accounts");
   accounts = data;
-  unsafeWindow.setPrograms(programs, accounts);
+  unsafeWindow.setAccounts(programs, accounts);
 });
 
 self.port.on("account-refresh", function(args) {
   var key = args.account.hostname+"#"+args.account.username;
-  console.log("got program-refresh "+key+" = "+JSON.stringify(args));
+  //console.log("got program-refresh "+key+" = "+JSON.stringify(args));
   localStorage[key] = JSON.stringify(args.data);
   // now, how to update one part of our template easily?
-  unsafeWindow.setPrograms(programs, accounts);
+  unsafeWindow.setAccounts(programs, accounts);
 })
 
 unsafeWindow.awards = {
   ready: function() {
-    console.log("ready called");
+    //console.log("ready called");
     self.port.emit("ready");
   },
   refresh: function(program, visible) {
-    console.log("refresh called");
+    //console.log("refresh called");
     program.visible = visible;
     self.port.emit("refresh", program);
   },
+  addProgram: function(name) {
+    for (var i=0; i < programs.length; i++) {
+      let p = programs[i];
+      if (p.name == name) {
+        self.port.emit('addProgram', p);
+        break;
+      }
+    }
+  },
   console: console
 };
-console.log("api loaded");
+console.log("awards api loaded");

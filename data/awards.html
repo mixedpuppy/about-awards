@@ -15,10 +15,18 @@
 
 <body>
 
+<div class="new-programs"></div>
 <div class="title">about:<span class="blue">awards</span></div> 
 
 <div id="programs-list"></div>
 
+<script id="available-programs-tmpl" type="text/x-jquery-tmpl">
+  <div>Add Account: <select id="allPrograms">
+    {{each( i, prg ) programs}}
+    <option value="${prg.name}">${prg.name}</option>
+    {{/each}}
+  </select><button id="addProgram">Add</button></div>
+</script>
 
 <script id="programs-tmpl" type="text/x-jquery-tmpl">
   <table class="headers"><tbody><tr>
