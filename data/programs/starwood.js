@@ -4,10 +4,8 @@ info_re = /(.*) \d+/;
 self.port.on('program', function(account) {
   //console.log('starwood data '+JSON.stringify(account));
   if (document.stdloginForm) {
-    var username = $('input[name="login"]');
-    username.value = account.username;
-    var passwordField = $('input[name="password"]');
-    passwordField.value = account.password;
+    $('input[name="login"]').val(account.username);
+    $('input[name="password"]').val(account.password);
     document.stdloginForm.submit();
     return;
   }
