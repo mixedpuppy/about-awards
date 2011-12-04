@@ -40,6 +40,8 @@ self.port.on('program', function(account) {
   }
   
   self.port.emit('data', data);
+  // force a logout
+  unsafeWindow.location = 'https://www.alaskaair.com/www2/ssl/myalaskaair/MyAlaskaAir.aspx?CurrentForm=UCSignOut';
 });
 
 console.log("alaska pageMod loaded");
