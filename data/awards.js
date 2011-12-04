@@ -20,11 +20,14 @@ function setPrograms(programs, accounts) {
             try {
               data = JSON.parse(data);
             } catch(e) {
-              data = defaultInfo;
+              data = $.extend({}, defaultInfo);
+              data.account = accounts[a].username || "unknown";
             }
           }
-          else
-            data = defaultInfo;
+          else {
+            data = $.extend({}, defaultInfo);
+            data.account = accounts[a].username || "unknown";
+          }
           pl.push({
             program: prg,
             account: accounts[a],
