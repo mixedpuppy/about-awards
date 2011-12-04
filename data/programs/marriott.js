@@ -14,7 +14,6 @@ self.port.on('program', function(account) {
   if (document.signInForm) {
     if (!account.username) {
       var memberNumber = $('input[name="visibleUserName"]').val();
-      dump("no account, memberNumber is "+memberNumber+"\n");
       if (!memberNumber) {
         self.port.emit('loginFailure');
         return;
@@ -23,7 +22,6 @@ self.port.on('program', function(account) {
     if (account.username) {
       $('input[name="visibleUserName"]').val(account.username);
     }
-    dump("no account, password is "+account.password+"\n");
     $('input[name="j_password"]').val(account.password);
     
     $('button[name="btnSubmit"]').click();
