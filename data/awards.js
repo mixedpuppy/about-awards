@@ -7,6 +7,12 @@ var defaultInfo = {
   expiration: 'unknown'
 }
 
+function setLoginFailure(data) {
+  var u = $('div[domain="'+data.account.hostname+'"][account="'+data.account.username+'"] .userName');
+  u.css('color', 'red');
+  u.text("Login Failure");
+}
+
 function setPrograms(programs) {
   //dump("setting programs to "+JSON.stringify(programs)+"\n");
   $(".new-programs").empty();

@@ -38,7 +38,7 @@
   </tr></tbody></table>
 
     {{each( i, prg ) programs}}
-    <div class="program">
+    <div class="program" domain="${prg.account.hostname}" account="${prg.account.username}">
       <div class="programAccount">
 <table><tbody><tr><td class="programName">${prg.program.name}</td><td class="userName">${prg.data.name}</td></tr></tbody></table>
       </div>

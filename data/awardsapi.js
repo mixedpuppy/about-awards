@@ -41,7 +41,12 @@ self.port.on("account-refresh", function(args) {
   localStorage[key] = JSON.stringify(args.data);
   // now, how to update one part of our template easily?
   unsafeWindow.setAccounts(programs, accounts);
-})
+});
+
+self.port.on("loginFailure", function(account) {
+  //console.log("loginFailure for "+JSON.stringify(account));
+  unsafeWindow.setLoginFailure(account);
+});
 
 unsafeWindow.awards = {
   ready: function() {
