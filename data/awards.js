@@ -37,12 +37,18 @@ function setPrograms(programs, accounts) {
     $("#programs-list").empty();
     $("#programs-tmpl").tmpl({programs: pl}).appendTo("#programs-list");
     $("div.links .refresh").click(function(evt) {
+      var visible = $("#dev_visible").attr('checked')===true;
+      awards.console.log("make this visible? "+visible+" : "+$("#dev_visible").attr('checked'));
       var i = $(this).attr('data-for');
-      awards.refresh(pl[i]);
+      awards.refresh(pl[i], visible);
     });
     $('button[type="link"]').click(function(evt) {
       var url = $(this).attr('data-for');
       window.open(url);
+    });
+    $('#dev_reset').click(function(evt) {
+      localStorage.clear();
+      awards.ready();
     });
   } catch(e) {
     awards.console.log("problem: "+e.toString());

@@ -49,8 +49,9 @@ unsafeWindow.awards = {
     console.log("ready called");
     self.port.emit("ready");
   },
-  refresh: function(program) {
+  refresh: function(program, visible) {
     console.log("refresh called");
+    program.visible = visible;
     self.port.emit("refresh", program);
   },
   console: console
