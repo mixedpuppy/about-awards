@@ -22,10 +22,11 @@
 
 <script id="available-programs-tmpl" type="text/x-jquery-tmpl">
   <div>Add Account: <select id="allPrograms">
+    <option>Select Program</option>
     {{each( i, prg ) programs}}
     <option value="${prg.name}">${prg.name}</option>
     {{/each}}
-  </select><button id="addProgram">Add</button></div>
+  </select></div>
 </script>
 
 <script id="programs-tmpl" type="text/x-jquery-tmpl">
@@ -40,16 +41,20 @@
     {{each( i, prg ) programs}}
     <div class="program" domain="${prg.account.hostname}" account="${prg.account.username}">
       <div class="programAccount">
-<table><tbody><tr><td class="programName">${prg.program.name}</td><td class="userName">${prg.data.name}</td></tr></tbody></table>
+        <table><tbody><tr>
+          <td class="programName"><img src="${prg.program.icon}" class="favicon"/>${prg.program.name}</td>
+          <td class="userName">${prg.data.name}</td>
+        </tr>
+        </tbody></table>
       </div>
       <div class="programInfo">
-<table><tbody><tr>
-  <td>${prg.data.account}&nbsp;</td>
-  <td>${prg.data.balance}&nbsp;</td>
-  <td>${prg.data.status}&nbsp;</td>
-  <td>${prg.data.statusMiles}&nbsp;</td>
-  <td>${prg.data.expiration}&nbsp;</td>
-</tr></tbody></table>
+        <table><tbody><tr>
+          <td>${prg.data.account}&nbsp;</td>
+          <td>${prg.data.balance}&nbsp;</td>
+          <td>${prg.data.status}&nbsp;</td>
+          <td>${prg.data.statusMiles}&nbsp;</td>
+          <td>${prg.data.expiration}&nbsp;</td>
+        </tr></tbody></table>
       </div>
       <div class="links">
         <button class="refresh" data-for="${i}">refresh</button>

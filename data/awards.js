@@ -17,7 +17,7 @@ function setPrograms(programs) {
   //dump("setting programs to "+JSON.stringify(programs)+"\n");
   $(".new-programs").empty();
   $("#available-programs-tmpl").tmpl({programs: programs}).appendTo(".new-programs");
-  $('#addProgram').click(function(evt) {
+  $('#allPrograms').change(function(evt) {
     awards.addProgram($('#allPrograms :selected').val());
   });
 }

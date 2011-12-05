@@ -19,6 +19,10 @@ body {
   float: right;
 }
 
+.favicon {
+  margin-right: 5px;
+}
+
 #programs-list {
   display: block;
   width: 90%;
