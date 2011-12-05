@@ -43,7 +43,7 @@ self.port.on('program', function(account) {
     name: fullName,
     account: memberNumber,
     balance: accountBalance,
-    status: memberLevel,
+    status: memberLevel || 'member',
     statusMiles: EQS + " / " + EQM,
     expiration: ""
   }
