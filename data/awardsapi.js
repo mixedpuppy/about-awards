@@ -1,26 +1,34 @@
 // this file is injected via pageMod
 
 self.port.on('data-url', function(baseurl) {
+  var head = document.getElementsByTagName("head")[0];
+  //dump("using baseurl of "+baseurl+"\n");
   var fileref=document.createElement("link");
   fileref.setAttribute("rel", "stylesheet");
   fileref.setAttribute("type", "text/css");
-  fileref.setAttribute("href", baseurl+"style.css");
-  document.getElementsByTagName("head")[0].appendChild(fileref);
+  fileref.setAttribute("href", baseurl+"styles.css");
+  head.appendChild(fileref);
+
+  fileref=document.createElement("link");
+  fileref.setAttribute("rel", "stylesheet");
+  fileref.setAttribute("type", "text/css");
+  fileref.setAttribute("href", baseurl+"boxes.css");
+  head.appendChild(fileref);
 
   fileref=document.createElement("script");
   fileref.setAttribute("type", "text/javascript");
   fileref.setAttribute("src", baseurl+"jquery-1.4.4.min.js");
-  document.getElementsByTagName("head")[0].appendChild(fileref);
+  head.appendChild(fileref);
 
   fileref=document.createElement("script");
   fileref.setAttribute("type", "text/javascript");
   fileref.setAttribute("src", baseurl+"jquery.tmpl.min.js");
-  document.getElementsByTagName("head")[0].appendChild(fileref);
+  head.appendChild(fileref);
 
   fileref=document.createElement("script");
   fileref.setAttribute("type", "text/javascript");
   fileref.setAttribute("src", baseurl+"awards.js");
-  document.getElementsByTagName("head")[0].appendChild(fileref);
+  head.appendChild(fileref);
 });
 
 var programs, accounts;

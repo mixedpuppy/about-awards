@@ -2,6 +2,10 @@
 info_re = /tierCode:(\w+), currentQualMiles:(\d+)/;
 
 self.port.on('program', function(account) {
+  if ($('div.mainErrorBlock:visible')[0]) {
+    self.port.emit('loginFailure');
+    return;
+  }
   //console.log('aeroplan data '+JSON.stringify(account));
   var f1 = document.getElementById('CUST1');
   var f2 = document.getElementById('CUST2');
@@ -21,7 +25,7 @@ self.port.on('program', function(account) {
   
   // gather our data now and send it back
   var info = info_re.exec(document.documentElement.innerHTML);
-  console.log(info);
+  //console.log(info);
   let status='';
   if (info[1] == 'P')
     status = "Prestige";
@@ -41,6 +45,9 @@ self.port.on('program', function(account) {
   }
   
   self.port.emit('data', data);
+});
+self.port.on('signout', function() {
+  unsafeWindow.location = '/log_out.do';
 });
 
 console.log("aeroplan pageMod loaded");

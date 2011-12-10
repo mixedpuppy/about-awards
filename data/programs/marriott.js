@@ -23,8 +23,8 @@ self.port.on('program', function(account) {
       $('input[name="visibleUserName"]').val(account.username);
     }
     $('input[name="j_password"]').val(account.password);
-    
-    $('button[name="btnSubmit"]').click();
+    document.myalaskaair.submit();
+    //$('button[name="btnSubmit"]').click();
     //document.signInForm.submit();
     //unsafeWindow.logIn();
     return;
@@ -51,6 +51,9 @@ self.port.on('program', function(account) {
   }
   
   self.port.emit('data', data);
+});
+self.port.on('signout', function() {
+  unsafeWindow.location = '/SignOutServlet?logoutExitPage=%2fdefault.mi';
 });
 
 console.log("marriott pageMod loaded");

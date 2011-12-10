@@ -36,6 +36,9 @@ self.port.on('program', function(account) {
   
   self.port.emit('data', data);
 });
+self.port.on('signout', function() {
+  unsafeWindow.location = '/h/d/pc/1/en/logoutm?logoutType=explicit&logoutSuccessURL=/';
+});
 
 console.log("ich pageMod loaded");
 self.port.emit('ready');

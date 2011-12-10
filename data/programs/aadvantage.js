@@ -50,6 +50,9 @@ self.port.on('program', function(account) {
   
   self.port.emit('data', data);
 });
+self.port.on('signout', function() {
+  unsafeWindow.location = '/login/logoutAccess.do';
+});
 
 console.log("american pageMod loaded");
 self.port.emit('ready');

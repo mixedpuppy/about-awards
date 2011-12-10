@@ -3,6 +3,11 @@ info_re = /Member Name:.(.*)Mileage Plan Number:.(.*)Available Miles:.(.*)/;
 
 self.port.on('program', function(account) {
   //console.log('alaska data '+JSON.stringify(account));
+  if ($('div.errorText:visible')[0]) {
+    self.port.emit('loginFailure');
+    return;
+  }
+
   var usernameField = document.getElementById(account.usernameField);
   if (!usernameField)
     usernameField = document.getElementById('FormUserControl__signInProfile__userIdControl__userId');
@@ -40,8 +45,9 @@ self.port.on('program', function(account) {
   }
   
   self.port.emit('data', data);
-  // force a logout
-  unsafeWindow.location = 'https://www.alaskaair.com/www2/ssl/myalaskaair/MyAlaskaAir.aspx?CurrentForm=UCSignOut';
+});
+self.port.on('signout', function() {
+  unsafeWindow.location = '/www2/ssl/myalaskaair/MyAlaskaAir.aspx?CurrentForm=UCSignOut';
 });
 
 console.log("alaska pageMod loaded");

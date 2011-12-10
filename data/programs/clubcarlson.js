@@ -2,12 +2,14 @@
 info_re = /(.*) member (.*) Gold Points/;
 
 self.port.on('program', function(account) {
-  //console.log('carlson data '+JSON.stringify(account));
+  if ($('div.globalerrors:visible')[0]) {
+    self.port.emit('loginFailure');
+    return;
+  }
+  console.log('carlson data '+JSON.stringify(account));
   if (document.loginForm) {
-    var username = $('input[name="userId"]');
-    username.value = account.username;
-    var passwordField = $('input[name="password"]');
-    passwordField.value = account.password;
+    $('input[name="userId"]').val(account.username);
+    $('input[name="password"]').val(account.password);
     document.loginForm.submit();
     return;
   }
@@ -26,6 +28,9 @@ self.port.on('program', function(account) {
   }
   
   self.port.emit('data', data);
+});
+self.port.on('signout', function() {
+  unsafeWindow.location = '/secure/logout.do';
 });
 
 console.log("carlson pageMod loaded");

@@ -1,6 +1,11 @@
 
 self.port.on('program', function(account) {
   //console.log('united data '+JSON.stringify(account));
+  if ($('div.validation-summary-errors:visible')[0]) {
+    self.port.emit('loginFailure');
+    return;
+  }
+
   var username = document.getElementById('UserName');
   if (username) {
     username.value = account.username;
@@ -29,6 +34,9 @@ self.port.on('program', function(account) {
   }
   
   self.port.emit('data', data);
+});
+self.port.on('signout', function() {
+  unsafeWindow.location = '/Account/LogOff';
 });
 
 console.log("united pageMod loaded");
