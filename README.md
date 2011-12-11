@@ -11,6 +11,8 @@ work around American Airlines blocking their service.  Both that effort and this
 that there is no reason why travel sites like AwardWallet should be asking users for their accounts
 on other sites.
 
+You can see a screenshot at https://github.com/mixedpuppy/about-awards/blob/master/addon/about-awards.png
+
 This addon uses the password manager in Firefox to discover what award programs you are a member of,
 and will automatically list them on the page.  You need to click 'refresh' to retreive the data.  If
 a program you have does not appear, you can use the dropdown menu at the upper left corner to add
