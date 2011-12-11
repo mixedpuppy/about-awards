@@ -1,22 +1,70 @@
 <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>about:awards</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<html>
-<head>
+    <link rel="shortcut icon" href="images/favicon.ico">
+  </head>
 
-<head>
-  <title>about:awards</title>
-</head>
+  <body>
 
-<body>
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <div class="new-programs pull-right"></div>
+          <div class="title">about:<span class="blue">awards</span></div> 
+        </div>
+      </div>
+    </div>
 
-<div class="new-programs"></div>
-<div class="title">about:<span class="blue">awards</span></div> 
+    <div class="container">
+      <div class="content">
+        <div class="row">
+          <div class="span10">
 
-<div id="programs-list"></div>
+            <div id="programs-list"></div>
+
+          </div>
+          <div class="span4">
+            <h4>Blogs and Communities</h4>
+            <ul>
+              <li><a href="http://www.flyertalk.com/" target="_new">Flyertalk</a></li>
+              <li><a href="http://thepointsguy.com/" target="_new">Points Guy</a></li>
+              <li><a href="http://www.frugaltravelguy.com/" target="_new">Frugal Travel Guy</a></li>
+              <li><a href="http://boardingarea.com" target="_new">Boarding Area</a></li>
+              <li><a href="http://www.rewardscanada.ca/" target="_new">Rewards Canada</a></li>
+              <li><a href="http://www.frequentflyerbonuses.com/" target="_new">Frequent Flyer Bonuses</a></li>
+              <li><a href="" target="_new"></a></li>
+            </ul>
+            <h4>Travel Tools</h4>
+            <ul>
+              <li><a href="http://matrix.itasoftware.com/" target="_new">ITA Matrix</a></li>
+              <li><a href="http://www.farecompare.com/" target="_new"></a>Fare Compare</li>
+              <li><a href="" target="_new"></a></li>
+            </ul>
+            <h4>about:awards</h4>
+            <ul>
+              <li><a href="" target="_new"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p>&copy; Shane Caraveo 2011</p>
+<div id="dev-options"><input type="checkbox" id="dev_visible">Show Pages on Refresh</input><button id="dev_reset" class="btn">Clear Data</button></div>
+
+      </footer>
+
+    </div> <!-- /container -->
+
 
 <script id="available-programs-tmpl" type="text/x-jquery-tmpl">
-  <div>Add Account: <select id="allPrograms">
-    <option>Select Program</option>
+  <div><select id="allPrograms">
+    <option>Select program to add</option>
     {{each( i, prg ) programs}}
     <option value="${prg.name}">${prg.name}</option>
     {{/each}}
@@ -34,33 +82,29 @@
 
     {{each( i, prg ) programs}}
     <div class="program" domain="${prg.account.hostname}" account="${prg.account.username}">
-      <div class="programAccount">
-        <table><tbody><tr>
-          <td class="programName"><img src="${prg.program.icon}" class="favicon"/>${prg.program.name}</td>
-          <td class="userName">${prg.data.name}</td>
-        </tr>
-        </tbody></table>
-      </div>
-      <div class="programInfo">
-        <table><tbody><tr>
+      <div>
+        <table><tbody><tr class="programAccount">
+          <td class="programName" colspan="2"><img src="${prg.program.icon}" class="favicon"/>${prg.program.name}</td>
+          <td class="userName" colspan="3"><span>${prg.data.name}</span></td>
+        </tr><tr class="programInfo">
           <td>${prg.data.account}&nbsp;</td>
           <td>${prg.data.balance}&nbsp;</td>
           <td>${prg.data.status}&nbsp;</td>
           <td>${prg.data.statusMiles}&nbsp;</td>
           <td>${prg.data.expiration}&nbsp;</td>
-        </tr></tbody></table>
+        </tr>
+        </tbody></table>
       </div>
       <div class="links">
-        <button class="refresh" data-for="${i}">refresh</button>
+        <button class="label small refresh" data-for="${i}">refresh</button>
     {{each( i, link ) prg.program.links}}
-        <button type="link" data-for="${link.href}">${link.title}</button>
+        <button class="label small" type="link" data-for="${link.href}">${link.title}</button>
     {{/each}}
       </div>
     </div>
     {{/each}}
 </script>
 
-<div id="dev-options"><input type="checkbox" id="dev_visible">Show Pages on Refresh</input><button id="dev_reset">Clear Data</button></div>
 
-</body>
+  </body>
 </html>

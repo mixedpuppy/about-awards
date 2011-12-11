@@ -8,8 +8,8 @@ var defaultInfo = {
 }
 
 function setLoginFailure(data) {
-  var u = $('div[domain="'+data.account.hostname+'"][account="'+data.account.username+'"] .userName');
-  u.css('color', 'red');
+  var u = $('div[domain="'+data.account.hostname+'"][account="'+data.account.username+'"] .userName span');
+  u.toggleClass('label important');
   u.text("Login Failure");
 }
 
