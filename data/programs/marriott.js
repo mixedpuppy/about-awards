@@ -23,8 +23,7 @@ self.port.on('program', function(account) {
       $('input[name="visibleUserName"]').val(account.username);
     }
     $('input[name="j_password"]').val(account.password);
-    document.myalaskaair.submit();
-    //$('button[name="btnSubmit"]').click();
+    $('button[name="btnSubmit"]').click();
     //document.signInForm.submit();
     //unsafeWindow.logIn();
     return;
