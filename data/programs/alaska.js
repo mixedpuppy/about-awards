@@ -2,7 +2,7 @@
 info_re = /Member Name:.(.*)Mileage Plan Number:.(.*)Available Miles:.(.*)/;
 
 self.port.on('program', function(account) {
-  console.log('alaska data '+JSON.stringify(account));
+  //console.log('alaska data '+JSON.stringify(account));
   if ($('div.errorText:visible')[0]) {
     self.port.emit('loginFailure');
     return;
