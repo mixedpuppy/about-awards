@@ -2,19 +2,15 @@
 info_re = /Member Name:.(.*)Mileage Plan Number:.(.*)Available Miles:.(.*)/;
 
 self.port.on('program', function(account) {
-  //console.log('alaska data '+JSON.stringify(account));
+  console.log('alaska data '+JSON.stringify(account));
   if ($('div.errorText:visible')[0]) {
     self.port.emit('loginFailure');
     return;
   }
 
-  var usernameField = document.getElementById(account.usernameField);
-  if (!usernameField)
-    usernameField = document.getElementById('FormUserControl__signInProfile__userIdControl__userId');
+  var usernameField = document.getElementById('FormUserControl__signInProfile__userIdControl__userId');
   if (usernameField) {
-    var passwordField = document.getElementById(account.passwordField);
-    if (!passwordField)
-      passwordField = document.getElementById('FormUserControl__signInProfile__passwordControl__password');
+    var passwordField = document.getElementById('FormUserControl__signInProfile__passwordControl__password');
     usernameField.value = account.username;
     passwordField.value = account.password;
     var button = document.getElementById('FormUserControl__signIn');

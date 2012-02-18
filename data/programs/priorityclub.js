@@ -1,29 +1,32 @@
 
 info_re = /(.*) \d+/;
 
+// form id's
+// UHF_header_loginform
+// walletLoginForm
 self.port.on('program', function(account) {
-  console.log('ich data '+JSON.stringify(account));
+  //console.log('ich data '+JSON.stringify(account));
   if ($('.error').text()) {
     self.port.emit('loginFailure');
     return;
   }
-  if (document.loginform) {
-    $('input[name="login"]').val(account.username);
+  
+  if ($('#walletLoginForm')[0]) {
+    $('input[name="emailOrPcrNumber"]').val(account.username);
     $('input[name="password"]').val(account.password);
-    document.loginform.submit();
+    $('#signInButton').click();
     return;
   }
   
   // sigh, no classes or id's that make this easy
-  var data = $(".accountStatusLabels").parent().parent().find('td');
-  var fullName = $(data[0]).find('b').text().trim();
-  var memberNumber = $(data[2]).text().trim();
-  var accountBalance = $(data[4]).find('.accountPointsPositive').text().trim();
+  var fullName = $($('.guestAndPcrInfo > div')[0]).text().trim();
+  var memberNumber = $($('.guestAndPcrInfo > .value')[0]).text().trim();
 
-  var statusNights = $(data[6]).text().trim();
-  var statusPoints = $(data[8]).find('.accountPointsPositive').text().trim();
+  var statusNights = $($('#ytdWrapper .value')[0]).text().trim();
+  var statusPoints = $($('#ytdWrapper .value')[1]).text().trim();
 
-  var memberLevel = $(data[10]).contents()[0].data.trim()
+  var accountBalance = $($('.pointsBalanceLabel .value')[0]).text().trim();
+  var memberLevel = $($('.pointsBalanceLabel .value')[1]).text().trim();
 
   let data = {
     name: fullName,
@@ -31,8 +34,9 @@ self.port.on('program', function(account) {
     balance: accountBalance,
     status: memberLevel,
     statusMiles: statusNights+" / "+statusPoints,
-    expiration: "Never"
+    expiration: ""
   }
+  //console.log(JSON.stringify(data));
   
   self.port.emit('data', data);
 });
