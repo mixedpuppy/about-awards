@@ -16,16 +16,17 @@ self.port.on('program', function(account) {
   }
   
   var fullName = $("div.fullName").text().trim();
-  var memberNumber = $("div.memberNumber > b").text().trim();
+  var memberNumber = $(".memberNumber > b").text().trim();
   var accountBalance = $("#accountBalance > b").text().trim();
   var memberLevel = info_re.exec($("div.memberLevelCopy").text().trim())[1];
+  var statusMiles = $('.accountInfo > span > strong').text().trim();
 
   let data = {
     name: fullName,
     account: memberNumber,
     balance: accountBalance,
     status: memberLevel,
-    statusMiles: "",
+    statusMiles: statusMiles,
     expiration: ""
   }
   
